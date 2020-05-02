@@ -62,11 +62,30 @@ var questions = [
 
   //Question and Answer Area
 
-  function createQuestionItem(q) {
-    let li = document.createElement('li');
-    li.textContent = q;
-    return li;
+//   function createQuestionItem(q) {
+//     let li = document.createElement('li');
+//     li.textContent = q;
+//     return li;
+// }
+
+function createQuestionItem(q) {
+  let input = document.createElement('input');
+  input.setAttribute('type', 'radio');
+  input.setAttribute('value', q);
+  input.setAttribute('id', q);
+  input.setAttribute('name', 'choice');
+  input.setAttribute('class', 'radiobutton');
+// set a listener to the above class and then know when it is checked it returns the value of what was checked (like "numbers" and put in variable... then just check the variable value
+  let label = document.createElement('label');
+label.textContent= q;
+label.setAttribute('for', q);
+let div = document.createElement('div')
+div.appendChild(input)
+div.appendChild(label)
+
+return div;
 }
+
 
 console.log('questionsListEL', questionsListEL);
 
