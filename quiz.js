@@ -1,6 +1,8 @@
 var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 var questionsEl = document.querySelector(".questions");
+var questionsTitle = document.querySelector(".questionsTitle");
+var questionsChoices = document.querySelector(".questionsChoices");
 var startButton = document.querySelector(".startButton");
 var soundPlay = document.createElement("audio");
 soundPlay.setAttribute("src", "assets/jeopardy.mp3");
@@ -9,8 +11,7 @@ soundFail.setAttribute("src", "assets/boo.wav");
 var soundWin = document.createElement("audio");    
 soundWin.setAttribute("src", "assets/applause.wav");
 
-
-
+var questionNum = 0;
 var secondsLeft = 60;
 
 // the song is 33 seconds long
@@ -42,7 +43,7 @@ var questions = [
     {
       title:
         "String values must be enclosed within ____ when being assigned to variables.",
-      choices: ["commas", "curly brackets", "quotes", "parentheses"],szzzsxz
+      choices: ["commas", "curly brackets", "quotes", "parentheses"],
       answer: "quotes"
     },
     {
@@ -52,6 +53,15 @@ var questions = [
       answer: "console.log"
     }
   ];
+  questionsTitle.textContent = questions[questionNum].title;
+  for (let index = 0; index < questions[questionNum].choices.length; index++) {
+    questionsChoices[index].textContent = questions[questionNum].choices[index];
+    questionsChoices.appendChild
+    
+  }
+
+  console.log('questions', questions[questionNum].answer)
+
 
 // question and answer area
 
@@ -63,6 +73,14 @@ startButton.addEventListener("click", function() {
   // console.log('questions[0]', questions.getattribute("title"))
 
 });
+
+function startQuiz(questionNum){
+
+  questions.forEach(
+
+  )
+
+}
 
 
 function setTime() {
