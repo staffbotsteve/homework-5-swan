@@ -1,8 +1,9 @@
 var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 var questionsEl = document.querySelector(".questions");
-var questionsTitle = document.querySelector(".questionsTitle");
-var questionsChoices = document.querySelector(".questionsChoices");
+var questionsTitleEl = document.querySelector(".questionsTitle");
+var questionsChoicesEl = document.querySelector(".questionsChoices");
+var questionsListEL = document.querySelector(".questionsList");
 var startButton = document.querySelector(".startButton");
 var soundPlay = document.createElement("audio");
 soundPlay.setAttribute("src", "assets/jeopardy.mp3");
@@ -11,7 +12,6 @@ soundFail.setAttribute("src", "assets/boo.wav");
 var soundWin = document.createElement("audio");    
 soundWin.setAttribute("src", "assets/applause.wav");
 
-var questionNum = 0;
 var secondsLeft = 60;
 
 // the song is 33 seconds long
@@ -53,17 +53,29 @@ var questions = [
       answer: "console.log"
     }
   ];
-  questionsTitle.textContent = questions[questionNum].title;
+
+  var questionNum = 0;
+  console.log('questions', questions)
+
+  //Question Title
+  questionsTitleEl.textContent = questions[questionNum].title;
+
+  //Question and Answer Area
+
+  function createQuestionItem(q) {
+    let li = document.createElement('li');
+    li.textContent = q;
+    return li;
+}
+
+console.log('questionsListEL', questionsListEL);
+
   for (let index = 0; index < questions[questionNum].choices.length; index++) {
-    questionsChoices[index].textContent = questions[questionNum].choices[index];
-    questionsChoices.appendChild
+
+    questionsListEL.appendChild(createQuestionItem(questions[questionNum].choices[index]))
     
-  }
+  };
 
-  console.log('questions', questions[questionNum].answer)
-
-
-// question and answer area
 
 startButton.addEventListener("click", function() {
   setTime();
