@@ -60,20 +60,51 @@ var questions = [
   var questionNum = 0;
   console.log('questions', questions)
 
-  // Start Button
-  startButton.addEventListener("click", function() {
-    setTime();
-    soundPlay.loop=true;
-    soundPlay.play();
-    // questionsEl.textContent=questions;
-    // console.log('questions[0]', questions.getattribute("title"))
-  
-  });
-
   //Question Title
   questionsTitleEl.textContent = questions[questionNum].title;
 
-// Set the time for the timer and play theme song until complete
+//   //Question and Answer Area
+// function createQuestionItem(q) {
+// let input = document.createElement('input');
+//   input.setAttribute('type', 'radio');
+//   input.setAttribute('value', q);
+//   input.setAttribute('id', q);
+//   input.setAttribute('name', 'choice');
+//   input.setAttribute('class', 'radiobutton');
+// // set a listener to the above class and then know when it is checked it returns the value of what was checked (like "numbers" and put in variable... then just check the variable value
+// let label = document.createElement('label');
+// label.textContent= q;
+// label.setAttribute('for', q);
+// let div = document.createElement('div')
+// let nextButton = document.createElement('button');
+// div.appendChild(input)
+// div.appendChild(label)
+// nextButton.appendChild(text);
+// // let paragraph = document.createElement('p');
+// // div.appendChild(paragraph);
+// div.appendChild(nextButton);
+
+// return div;
+// }
+
+// console.log('questionsListEL', questionsListEL);
+
+//   for (let index = 0; index < questions[questionNum].choices.length; index++) {
+
+//     questionsListEL.appendChild(createQuestionItem(questions[questionNum].choices[index]))
+    
+//   };
+
+
+startButton.addEventListener("click", function() {
+  setTime();
+  soundPlay.loop=true;
+  soundPlay.play();
+  // questionsEl.textContent=questions;
+  // console.log('questions[0]', questions.getattribute("title"))
+
+});
+
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
