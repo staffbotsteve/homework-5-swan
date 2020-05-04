@@ -34,32 +34,6 @@ var successSong = "assets/applause.wav";
   var input3 = document.getElementById('quizInputChoice3');
   var input4 = document.getElementById('quizInputChoice4');
 
-  // input1.setAttribute('class','form-check-input');
-  // input1.setAttribute('type','radio');
-  // input1.setAttribute('name','quizRadios');
-  // input1.setAttribute('value','option1');
-  // input1.setAttribute('style','visibility: hidden');
-  // console.log('input1', input1)
-
-  // input2.setAttribute('class','form-check-input');
-  // input2.setAttribute('type','radio');
-  // input2.setAttribute('name','quizRadios');
-  // input2.setAttribute('value','option2');
-  // input2.setAttribute('style','visibility: hidden');
-  // console.log('input2', input2)
-
-  // input3.setAttribute('class','form-check-input');
-  // input3.setAttribute('type','radio');
-  // input3.setAttribute('name','quizRadios');
-  // input3.setAttribute('value','option3');
-  // input3.setAttribute('style','visibility: hidden');
-  // console.log('input3', input3)
-
-  // input4.setAttribute('class','form-check-input');
-  // input4.setAttribute('type','radio');
-  // input4.setAttribute('name','quizRadios');
-  // input4.setAttribute('value','option4');  
-  // input4.setAttribute('style','visibility: hidden');
   console.log('input4', input4)
 
   var label1 = document.getElementById('quizLabelChoice1');
@@ -71,36 +45,8 @@ var successSong = "assets/applause.wav";
   console.log('input3', label3)
   console.log('label4', label4)
 
-  // label1.setAttribute('class','form-check-label');
-  // label1.setAttribute('for','quizInputChoice1');
-  // label1.setAttribute('style','visibility: hidden');
-
-  // label2.setAttribute('class','form-check-label');
-  // label2.setAttribute('for','quizInputChoice2');
-  // label2.setAttribute('style','visibility: hidden');
-
-  // label3.setAttribute('class','form-check-label');
-  // label3.setAttribute('for','quizInputChoice3');
-  // label2.setAttribute('style','visibility: hidden');
-
-  // label4.setAttribute('class','form-check-label');
-  // label4.setAttribute('for','quizInputChoice4');
-  // label4.setAttribute('style','visibility: hidden');
-
   var nextButton = document.getElementById("nextButton")
-
-  // div1.appendChild(input1);
-  // div2.appendChild(input2);
-  // div3.appendChild(input3);
-  // div4.appendChild(input4);
-  // div5.appendChild(nextButton);
   console.log('div5', div5)
-
-
-  // div1.appendChild(label1);
-  // div2.appendChild(label2);
-  // div3.appendChild(label3);
-  // div4.appendChild(label4);
 
 var questions = [
     {
@@ -140,11 +86,16 @@ var questions = [
   // Start Button
   startButton.addEventListener("click", function() {
     setTime();
-    soundPlay.loop=true;
-    soundPlay.play();
+    // soundPlay.loop=true;
+    // soundPlay.play();
     // questionsEl.textContent=questions;
     // console.log('questions[0]', questions.getattribute("title"))
   
+  });
+
+  nextButton.addEventListener('click', function(){
+    checkAnswer();
+    addQuestion();
   });
 
   //Question Title
@@ -159,8 +110,8 @@ function setTime() {
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
-      soundPlay.pause();
-      soundWin.play();
+      // soundPlay.pause(); REMEMBER TO RE-ENABLE THIS
+      // soundWin.play();REMEMBER TO RE-ENABLE THIS
     //   sendMessage();
     }
   }, 1000);
@@ -168,7 +119,16 @@ function setTime() {
 }
 var questionNum = 0;
 function addQuestion(){
-
+  var questionTitle = document.getElementById('questionsTitle');
+  questionTitle.innerHTML = questions[questionNum].title;
+  input1.value = questions[questionNum].choices[0];
+  input2.value = questions[questionNum].choices[1];
+  input3.value = questions[questionNum].choices[2];
+  input4.value = questions[questionNum].choices[3];
+  label1.innerHTML = questions[questionNum].choices[0];
+  label2.innerHTML = questions[questionNum].choices[1];
+  label3.innerHTML = questions[questionNum].choices[2];
+  label4.innerHTML = questions[questionNum].choices[3];
 // in this function we need to
 // 1. change the titleEl to the value in questions[i].title[i]
 // 2. change the radio button choice values
@@ -179,11 +139,11 @@ function addQuestion(){
 
   };
 var selection = "";
-var score ="";
+var score = 0;
 
 function checkAnswer(){
 // in this function we need to
-// 1. collect all radios
+// 1. collect all radios (DONE)
 // 2. through a loop, check to see which are checked
 // 3. get the corresponding value (through label?)
 // 4. store to the selection variable so we can compare to questions[i].answer(0)
@@ -194,6 +154,24 @@ function checkAnswer(){
 
 var radios = document.querySelectorAll("input");
 console.log('radios', radios)
+var selectedRadio = Array.from(radios).find(el => el.checked);
+var answer = '';
+if (selectedRadio) {
+  answer = selectedRadio.value;
+}
+var correctAnswer = questions[questionNum].answer;
+if (answer === correctAnswer) {
+  score++;
+  questionNum++;
+  addQuestion();
+  console.log('answer', answer, correctAnswer);
+}else {
+  secondsLeft=secondsLeft-10;
+  timeEl.textContent = "Time Remaining: " + secondsLeft;
+  addQuestion();
+
+}
+
 // console.log('finding values test', radios(0).checked)
 
 // input1.addEventListener('input', function (evt) {
