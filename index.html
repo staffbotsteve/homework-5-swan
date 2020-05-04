@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="mainContainer" style="visibility: hidden;">
             <!-- Timer, Question Title START-->
             <div class="row questionHeader">
                 <div class="col-2">
@@ -44,15 +44,13 @@
                     <div class="row">
                         <h1 class='time' style="color: #003262;">
                     Time Remaining: 60
-                    <hr>
                         </h1>
                     </div>
                     <div class="row questions" style="color: #003262;">
                     </div>
                     <div class="row questionsTitle h4">
-
+                        Commonly used data types DO NOT include:
                     </div>
-                    <hr>
                 </div>
                 <div class="col-2">
                 </div>
@@ -63,7 +61,7 @@
                 <div class="col-2">
                 </div>
                 <!-- Choices START-->
-                <div class="col-8">
+                <div class="col-8" id="centerColumn">
 
                     <div class="form-check" id="questionDiv1">
                         <input class="form-check-input" type="radio" name="quizRadios" id="quizInputChoice1" value="option1">
@@ -105,7 +103,7 @@
                 <!-- Choices START-->
                 <div class="col-8" id="buttonDiv">
                     <p class='button nextButton'>
-                        <button class="btn btn-primary" style="color: #FDB515; background-color: #003262" type="submit">Next</button>
+                        <button class="btn btn-primary" id="nextButton" style="color: #FDB515; background-color: #003262" type="submit">Next</button>
                     </p>
         
                 </div>
