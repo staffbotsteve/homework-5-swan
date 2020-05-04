@@ -86,8 +86,8 @@ var questions = [
   // Start Button
   startButton.addEventListener("click", function() {
     setTime();
-    // soundPlay.loop=true;
-    // soundPlay.play();
+    soundPlay.loop=true;
+    soundPlay.play();
     // questionsEl.textContent=questions;
     // console.log('questions[0]', questions.getattribute("title"))
   
@@ -110,9 +110,9 @@ function setTime() {
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
-      // soundPlay.pause(); REMEMBER TO RE-ENABLE THIS
-      // soundWin.play();REMEMBER TO RE-ENABLE THIS
-    //   sendMessage();
+      soundPlay.pause(); REMEMBER TO RE-ENABLE THIS
+      soundWin.play();REMEMBER TO RE-ENABLE THIS
+      sendMessage();
     }
   }, 1000);
   // addQuestion();
@@ -171,15 +171,6 @@ if (answer === correctAnswer) {
   addQuestion();
 
 }
-
-// console.log('finding values test', radios(0).checked)
-
-// input1.addEventListener('input', function (evt) {
-//   something(this.value);
-// if(input1.checked) { 
-//   selection = label1.innerHTML;
-//   console.log('selection',selection)
-// }
 }
 checkAnswer();
 
