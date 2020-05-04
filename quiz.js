@@ -19,74 +19,9 @@ var themeSong = "assets/jeopardy.mp3";
 var failSong = "assets/boo.wav"
 var successSong = "assets/applause.wav";
 
-var questions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
-    },
-    {
-      title: "Arrays in JavaScript can be used to store ____.",
-      choices: [
-        "numbers and strings",
-        "other arrays",
-        "booleans",
-        "all of the above"
-      ],
-      answer: "all of the above"
-    },
-    {
-      title:
-        "String values must be enclosed within ____ when being assigned to variables.",
-      choices: ["commas", "curly brackets", "quotes", "parentheses"],
-      answer: "quotes"
-    },
-    {
-      title:
-        "A very useful tool used during development and debugging for printing content to the debugger is:",
-      choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-      answer: "console.log"
-    }
-  ];
-
-  var questionNum = 0;
-  console.log('questions', questions)
-
-  // Start Button
-  startButton.addEventListener("click", function() {
-    setTime();
-    soundPlay.loop=true;
-    soundPlay.play();
-    // questionsEl.textContent=questions;
-    // console.log('questions[0]', questions.getattribute("title"))
-  
-  });
-
-  //Question Title
-  // questionsTitleEl.textContent = questions[questionNum].title;
-
-// Set the time for the timer and play theme song until complete
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = "Time Remaining: " + secondsLeft;
-
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      soundPlay.pause();
-      soundWin.play();
-    //   sendMessage();
-    }
-
-  }, 1000);
-}
-
   //Question and Answer Area
+  var container = document.getElementById('mainContainer') 
+  container.setAttribute('style', 'visibility: visible')
   var div1 = document.getElementById('questionDiv1')
   var div2 = document.getElementById('questionDiv2')
   var div3 = document.getElementById('questionDiv3')
@@ -157,9 +92,8 @@ function setTime() {
   console.log('nextButton', nextButton)
   var text = document.createTextNode("Next");
   console.log('nextButton', nextButton)
-  nextButton.innerHTML="Next";
   nextButton.setAttribute('class', 'btn btn-primary');
-  nextButton.setAttribute('style', 'color: #FDB515; background-color: #003262');
+  nextButton.setAttribute('style', 'color: #FDB515; background-color: #003262; visibility:hidden');
   nextButton.setAttribute('value', 'Next');
   nextButton.setAttribute('type', 'submit');
   nextButton.appendChild(text);
@@ -168,14 +102,88 @@ function setTime() {
   div2.appendChild(input2);
   div3.appendChild(input3);
   div4.appendChild(input4);
+  div5.appendChild(nextButton);
+  console.log('div5', div5)
+
 
   // div1.appendChild(label1);
   // div2.appendChild(label2);
   // div3.appendChild(label3);
   // div4.appendChild(label4);
 
-  div5.appendChild(nextButton);
-  console.log('div5', div5)
-  nextButton.addEventListener ("click", function() {
-    alert("did something");
+var questions = [
+    {
+      title: "Commonly used data types DO NOT include:",
+      choices: ["strings", "booleans", "alerts", "numbers"],
+      answer: "alerts"
+    },
+    {
+      title: "The condition in an if / else statement is enclosed within ____.",
+      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+      answer: "parentheses"
+    },
+    {
+      title: "Arrays in JavaScript can be used to store ____.",
+      choices: [
+        "numbers and strings",
+        "other arrays",
+        "booleans",
+        "all of the above"
+      ],
+      answer: "all of the above"
+    },
+    {
+      title:
+        "String values must be enclosed within ____ when being assigned to variables.",
+      choices: ["commas", "curly brackets", "quotes", "parentheses"],
+      answer: "quotes"
+    },
+    {
+      title:
+        "A very useful tool used during development and debugging for printing content to the debugger is:",
+      choices: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+      answer: "console.log"
+    }
+  ];
+
+  // Start Button
+  startButton.addEventListener("click", function() {
+    setTime();
+    soundPlay.loop=true;
+    soundPlay.play();
+    // questionsEl.textContent=questions;
+    // console.log('questions[0]', questions.getattribute("title"))
+  
   });
+
+  //Question Title
+  // questionsTitleEl.textContent = questions[questionNum].title;
+
+// Set the time for the timer and play theme song until complete
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = "Time Remaining: " + secondsLeft;
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      soundPlay.pause();
+      soundWin.play();
+    //   sendMessage();
+    }
+  }, 1000);
+  addQuestion1();
+}
+var questionNum = 0;
+function addQuestion1(){
+  input1.setAttribute('style','visibility:visible');
+  input2.setAttribute('style','visibility:visible');
+  input3.setAttribute('style','visibility:visible');
+  input4.setAttribute('style','visibility:visible');
+
+  nextButton.setAttribute('style', 'visibility:visible');
+  nextButton.addEventListener ("click", function() {
+
+  });
+
+}

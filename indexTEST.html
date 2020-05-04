@@ -28,13 +28,14 @@
                 </p>
                 <h1 class="display-4" style="color: #003262;">Javascript Quiz</h1>
                 <p class="preamble" style="color: #003262;">This is a quiz for Javascript students, exclusively at Cal.  If you go to Stanford, well, you've already failed.</p>
+                <p class="preamble" style="color: #003262;">You will be given 60 seconds to complete the quiz.  For each incorrect answer, 5 seconds will be deducted from the time remaining.</p>
             <p class='button startButton'>
                 <button class="btn btn-primary" style="color: #FDB515; background-color: #003262" type="submit">Start</button>
             </p>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" style="visibility: hidden;" id="mainContainer">
             <!-- Timer, Question Title START-->
             <div class="row questionHeader">
                 <div class="col-2">
@@ -43,7 +44,6 @@
                 <div class="col-8" id="timer">
                     <div class="row">
                         <h1 class='time' style="color: #003262;">
-                    Time Remaining: 60
                     <hr>
                         </h1>
                     </div>
