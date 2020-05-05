@@ -47,6 +47,9 @@ var successSong = "assets/applause.wav";
 
   var nextButton = document.getElementById("nextButton")
   console.log('div5', div5)
+  var storeScoreButton = document.getElementById("storeScoreButton")
+  console.log('div5', div5)
+
 
 var questions = [
     {
@@ -110,8 +113,8 @@ function setTime() {
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
-      soundPlay.pause(); REMEMBER TO RE-ENABLE THIS
-      soundWin.play();REMEMBER TO RE-ENABLE THIS
+      soundPlay.pause(); 
+      soundWin.play();
       sendMessage();
     }
   }, 1000);
@@ -176,4 +179,32 @@ checkAnswer();
 
 function storeScore(){
   // in this function, we need to access the session and store their name and score to an array / list if they WebAuthentication
+
+  $(document).ready(function() {
+
+    $("#random-button").on("click", function() {
+
+      // Create a string which will hold the lottery number
+      var lottoNumber = "";
+
+      // Then initiate a loop to generate 9 separate numbers
+      for (var i = 0; i < 9; i++) {
+
+        // For each iteration, generate a new random number between 0 and 9.
+        var random = Math.floor(Math.random() * 10);
+
+        // Take this number and then add it to the rest of the string.
+        // In essence, we are iteratively building a string of numbers. (e.g. First: 1, Second: 13, Third: 135, etc.)
+        lottoNumber = random + lottoNumber;
+
+      }
+
+      // ... and then dump the random number into our random-number div.
+      $("#random-number").prepend("<br><hr>" + lottoNumber);
+
+    });
+
+  });
+
+
 }
