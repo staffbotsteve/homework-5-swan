@@ -42,6 +42,8 @@ var successSong = "assets/applause.wav";
   console.log('div5', div5)
   var storeScoreButton = document.getElementById("storeScoreButton")
   console.log('div5', div5)
+  var scoreTitleEl = document.getElementById("scoreTitle");
+  console.log('scoreTitleEl', scoreTitleEl);
 
 
 var questions = [
@@ -142,6 +144,7 @@ console.log('questionNum', questionNum)
     radio.checked=false;
   }
 
+if (questionNum!==questions.length) {
   questionTitle.innerHTML = questions[questionNum].title;
   input1.value = questions[questionNum].choices[0];
   input2.value = questions[questionNum].choices[1];
@@ -151,6 +154,10 @@ console.log('questionNum', questionNum)
   label2.innerHTML = questions[questionNum].choices[1];
   label3.innerHTML = questions[questionNum].choices[2];
   label4.innerHTML = questions[questionNum].choices[3];
+}
+else{
+  storeScore();
+}
 // in this function we need to
 // 1. change the titleEl to the value in questions[i].title[i]
 // 2. change the radio button choice values
@@ -197,18 +204,24 @@ checkAnswer();
 
 function storeScore(){
   // in this function, we need to access the session and store their name and score to an array / list if they WebAuthentication
+  clearInterval(timerInterval);
+  timeEl.textContent = "Time Remaining: " + secondsLeft;
+  soundPlay.pause(); 
+  soundWin.play();
+  div6.setAttribute('style', 'visibility:visible');
+  scoreTitleEl.textContent = "Score: " + score;
+  $("#storeScoreButton").on("click", function() {
+    if (confirm('Would you like to save your score?')) {
+      // Save it!
+      console.log('yes');
+    } else {
+      // Do nothing!
+      console.log('no');
+    }
+    // we have the score in the score variable
 
-  $(document).ready(function() {
-
-    $("#storeScoreButton").on("click", function() {
-
-      // we have the score in the score variable
-
-      // $("#random-number").prepend("<br><hr>" + lottoNumber);
-
-    });
+    // $("#random-number").prepend("<br><hr>" + lottoNumber);
 
   });
 
-
-}
+  };
