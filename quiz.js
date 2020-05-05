@@ -27,24 +27,17 @@ var successSong = "assets/applause.wav";
   var div3 = document.getElementById('questionDiv3')
   var div4 = document.getElementById('questionDiv4')
   var div5 = document.getElementById('buttonDiv')
-  console.log('div5', div5);
+  var div6 = document.getElementById('storeScoreDiv')
 
   var input1 = document.getElementById('quizInputChoice1');
   var input2 = document.getElementById('quizInputChoice2');
   var input3 = document.getElementById('quizInputChoice3');
   var input4 = document.getElementById('quizInputChoice4');
 
-  console.log('input4', input4)
-
   var label1 = document.getElementById('quizLabelChoice1');
   var label2 = document.getElementById('quizLabelChoice2');
   var label3 = document.getElementById('quizLabelChoice3');
   var label4 = document.getElementById('quizLabelChoice4');
-  console.log('label1', label1)
-  console.log('label2', label2)
-  console.log('input3', label3)
-  console.log('label4', label4)
-
   var nextButton = document.getElementById("nextButton")
   console.log('div5', div5)
   var storeScoreButton = document.getElementById("storeScoreButton")
@@ -122,7 +115,23 @@ function setTime() {
 }
 var questionNum = 0;
 function addQuestion(){
+// if (questions.length=questionNum){
+//   div5.setAttribute('style', "visibility:hidden")
+//   div6.setAttribute('style', "visibility:visible")
+//   soundPlay.pause(); 
+//   soundWin.play();
+//   return(timeEl.textContent = "Time Remaining: " + secondsLeft);
+// }
+console.log('questions.length', questions.length)
+console.log('questionNum', questionNum)
+
   var questionTitle = document.getElementById('questionsTitle');
+  var radios = document.querySelectorAll("input");
+  for (let index = 0; index < radios.length; index++) {
+    const radio = radios[index];
+    radio.checked=false;
+  }
+
   questionTitle.innerHTML = questions[questionNum].title;
   input1.value = questions[questionNum].choices[0];
   input2.value = questions[questionNum].choices[1];
@@ -172,7 +181,6 @@ if (answer === correctAnswer) {
   secondsLeft=secondsLeft-10;
   timeEl.textContent = "Time Remaining: " + secondsLeft;
   addQuestion();
-
 }
 }
 checkAnswer();
