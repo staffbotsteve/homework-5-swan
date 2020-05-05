@@ -44,6 +44,7 @@ var successSong = "assets/applause.wav";
   console.log('div5', div5)
   var scoreTitleEl = document.getElementById("scoreTitle");
   console.log('scoreTitleEl', scoreTitleEl);
+  var highScoresEl = document.getElementById('highScores');
 
 
 var questions = [
@@ -211,17 +212,8 @@ function storeScore(){
   div6.setAttribute('style', 'visibility:visible');
   scoreTitleEl.textContent = "Score: " + score;
   $("#storeScoreButton").on("click", function() {
-    if (confirm('Would you like to save your score?')) {
-      // Save it!
-      console.log('yes');
-    } else {
-      // Do nothing!
-      console.log('no');
-    }
-    // we have the score in the score variable
-
-    // $("#random-number").prepend("<br><hr>" + lottoNumber);
-
+    initials = prompt("Please enter your initials:")
+    $("highScoresEl").prepend( initials + score);
   });
 
   };
