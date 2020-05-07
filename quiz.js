@@ -87,6 +87,10 @@ var questions = [
     setTime();
     soundPlay.loop=true;
     soundPlay.play();  
+    score = 0;
+    questionNum = 0;
+    secondsLeft = 60;
+    addQuestion();
   });
 
   nextButton.addEventListener('click', function(){
@@ -211,7 +215,7 @@ function storeScore(){
   soundWin.play();
   div6.setAttribute('style', 'visibility:visible');
   scoreTitleEl.textContent = "Score: " + score;
-
+  };
   $("#storeScoreButton").on("click", function() {
     initials = prompt("Please enter your initials:")
     // $("highScoresEl").prepend( initials + score);
@@ -222,4 +226,3 @@ function storeScore(){
     }
     scoreListEl.appendChild(addScores(initials + ": " + score))
   });
-  };
