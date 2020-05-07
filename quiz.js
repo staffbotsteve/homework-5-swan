@@ -86,10 +86,7 @@ var questions = [
   startButton.addEventListener("click", function() {
     setTime();
     soundPlay.loop=true;
-    soundPlay.play();
-    // questionsEl.textContent=questions;
-    // console.log('questions[0]', questions.getattribute("title"))
-  
+    soundPlay.play();  
   });
 
   nextButton.addEventListener('click', function(){
@@ -99,7 +96,7 @@ var questions = [
       soundPlay.pause(); 
       soundWin.play();
       div6.setAttribute('style', 'visibility:visible');
-      storeScore();
+      // COMMENTED storeScore();
     }
     checkAnswer();
     addQuestion();
@@ -121,7 +118,7 @@ function setTime() {
       soundPlay.pause(); 
       soundWin.play();
       div6.setAttribute('style', 'visibility:visible');
-      storeScore();
+      // storeScore();
     }
   }, 1000);
   // addQuestion();
@@ -157,7 +154,7 @@ if (questionNum!==questions.length) {
   label4.innerHTML = questions[questionNum].choices[3];
 }
 else{
-  storeScore();
+storeScore();
 }
 // in this function we need to
 // 1. change the titleEl to the value in questions[i].title[i]
@@ -203,6 +200,9 @@ if (answer === correctAnswer) {
 }
 checkAnswer();
 
+var scoreListEl = document.querySelector("#scorelist");
+var scoreList = [];
+
 function storeScore(){
   // in this function, we need to access the session and store their name and score to an array / list if they WebAuthentication
   clearInterval(timerInterval);
@@ -211,9 +211,15 @@ function storeScore(){
   soundWin.play();
   div6.setAttribute('style', 'visibility:visible');
   scoreTitleEl.textContent = "Score: " + score;
+
   $("#storeScoreButton").on("click", function() {
     initials = prompt("Please enter your initials:")
-    $("highScoresEl").prepend( initials + score);
+    // $("highScoresEl").prepend( initials + score);
+    function addScores(score) {
+      let li = document.createElement('li');
+      li.textContent = score;
+      return li;
+    }
+    scoreListEl.appendChild(addScores(initials + ": " + score))
   });
-
   };
